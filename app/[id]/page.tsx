@@ -1,19 +1,19 @@
 'use client'
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
-import LoadingProduct from '../Components/loadingpages/LoadingProduct';
 import { useState , useEffect } from 'react';
 import axios , { AxiosError } from 'axios';
 import DoneIcon from '@mui/icons-material/Done';
-import StorefrontIcon from '@mui/icons-material/Storefront';
-import GppGoodOutlinedIcon from '@mui/icons-material/GppGoodOutlined';
-import { useDispatch , useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addItem , removeItem } from '../Redux/features/card-slice';
 import { AppDispatch } from '../Redux/store';
 import { useAppSelector } from '../Redux/store';
+import LoadingProduct from '../Components/loadingpages/LoadingProduct';
+import StorefrontIcon from '@mui/icons-material/Storefront';
+import GppGoodOutlinedIcon from '@mui/icons-material/GppGoodOutlined';
+
 
 const Product = ({ params }: { params: { id: string } }) => {
-
 
     const [detailsproduct, setDetailsproduct] = useState<any | null>(null)
     const [isLoading, setIsLoading] = useState(true)
@@ -21,9 +21,6 @@ const Product = ({ params }: { params: { id: string } }) => {
     const [moredetails, setMoredetails] = useState(false)
     const [idhandling, setIdhandling] = useState<number>(0)
     const [activeTab, setActiveTab] = useState(0);
-    
-    console.log(detailsproduct);
-    
 
     const handleTabClick = (index:number) => {
         setActiveTab(index);
@@ -62,27 +59,18 @@ const Product = ({ params }: { params: { id: string } }) => {
       }, [])
 
 
-      
-      
-      
-      
       const dispatch = useDispatch<AppDispatch>();
       
       const buybasket : any = useAppSelector( (state) => state.cardSlice.items)
-      console.log("this is a lang",buybasket)
+      
       
       const handleaddcard = ()=>{
           dispatch(addItem(detailsproduct))
         }
         
         const handleremovecard = ()=>{
-            dispatch(removeItem(params.id))
+            dispatch(removeItem(idhandling))
         }
-        
-        console.log(buybasket.filter((item:any) => item.id == idhandling).length);
-    
-    
-    
     
         return ( 
         <>
@@ -91,8 +79,6 @@ const Product = ({ params }: { params: { id: string } }) => {
 isLoading ?
 
   <LoadingProduct />
-
-
   :
   <>
     <div className='z-20 bg-white hidden max-[1050px]:flex bottom-0 fixed h-1/6 w-full border-t-2 border-[#81858b]/[0.4]'>

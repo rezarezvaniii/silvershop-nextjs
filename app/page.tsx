@@ -80,7 +80,7 @@ export default function Home() {
 
     
 
-    <main className="">
+    <main className="flex flex-col w-full">
     
     <div className="flex mt-10 gap-5 px-[50px] ">
         <div className="w-3/12 max-[1000px]:w-0  max-[1000px]:hidden h-96">
@@ -101,7 +101,7 @@ export default function Home() {
 
           </div>
 
-          <div className="flex gap-5 mt-8 flex-wrap justify-between">
+          <div className="flex gap-5 mt-8 flex-wrap justify-between ">
 
             {
 
@@ -137,37 +137,25 @@ export default function Home() {
                             {item.full_price.sale_price_with_tax_and_discount.toLocaleString()} ریال
                           </p> :
                           null
-
                       }
-
                     </div>
                     <p className="px-2 font-medium mt-2">
                       <StorefrontIcon />
                       فروشگاه مرکزی
                     </p>
-
                   </Link>
-
                 )
                 ) :
-                handleloading.map((item, index) =>
+                handleloading.map((item, index:number) =>
                 (
-
                   <LoadingHome key={index} />
-
                 )
                 )
             }
-
           </div>
-
           <div className="py-10 w-full flex justify-center">
-
-
-
             <Stack spacing={2}>
               <Pagination
-
                 variant="outlined" shape="rounded"
                 onChange={(e, value) => setPageApi(value)}
                 onClick={() => window.scrollTo(0, 0)}
@@ -183,15 +171,27 @@ export default function Home() {
                 )}
               />
             </Stack>
-
           </div>
 
 
+
+
+          
+
+
+
+
+
+
+
         </div>
+      </div>
 
-      </div >
+
+                
 
 
+      
     </main>
   )
 }

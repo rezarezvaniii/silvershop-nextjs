@@ -1,11 +1,21 @@
+'use client'
 import Link from "next/link";
 import silverShopimg from "../../public/picture/62bae0e36e541479378535.png"
 import Image from 'next/image'
-
-
+import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
+import { useAppSelector } from "../Redux/store";
 
 
 const Header = () => {
+
+
+
+  const productbasket : any = useAppSelector( (state) => state.cardSlice.items)
+
+  const uniqueBasket = productbasket.filter(
+    (item:any, index:number, self:any) => index === self.findIndex((t:any) => t.id === item.id)
+  );
+
     return ( 
       <>
       <div className="px-[50px] flex max-[411px]:px-4 justify-between">
@@ -24,7 +34,22 @@ const Header = () => {
 
         <div className="flex gap-4  items-center ">
           <button className="px-7 py-3 bg-[#f01436] max-[480px]:px-3 hover:bg-[#780a1b]/[0.9] transition-all duration-300 text-white rounded-xl">ورود / ثبت نام </button>
-          
+          <Link href={"/basket"} className="cursor-pointer relative">
+            <LocalGroceryStoreIcon color="action" />
+            {
+              uniqueBasket.length !== 0 ?
+              <div className="flex items-center justify-center w-6 h-6 rounded-md absolute -bottom-3 -left-3  bg-[#f01436]">
+                <p className="text-white">
+                  {
+                    uniqueBasket.length ? uniqueBasket.length : null 
+                  }
+                </p>
+              </div>
+              :
+              null
+            }
+
+          </Link>
 
         </div>
 
