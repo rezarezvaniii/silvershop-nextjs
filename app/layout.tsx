@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={yekanfont.className}>
+      <body suppressHydrationWarning={true} className={yekanfont.className}>
        
         <ReduxProvider>
         <Header />

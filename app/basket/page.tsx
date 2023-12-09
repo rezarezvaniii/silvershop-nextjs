@@ -43,11 +43,9 @@ const Basket = () => {
 
   const dispatch = useDispatch<AppDispatch>();
 
-
   const handleAddToCart = (item:any) => {
     dispatch(addItem(item));
   };
-
   const handleRemoveFromCart = (id:number) => {
     dispatch(removeItem(id));
   };

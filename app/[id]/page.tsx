@@ -46,8 +46,6 @@ const Product = ({ params }: { params: { id: string } }) => {
           setIsLoading(false)
     
     
-    
-    
         } catch (error) {
             const err = error as AxiosError
             console.log(err.response?.data)
@@ -82,7 +80,6 @@ isLoading ?
   :
   <>
     <div className='z-20 bg-white hidden max-[1050px]:flex bottom-0 fixed h-1/6 w-full border-t-2 border-[#81858b]/[0.4]'>
-
       {
         buybasket.filter((item:any) => item.id == params.id).length < 1 ?
           <div className='flex items-center justify-evenly w-full h-full '>
@@ -112,7 +109,6 @@ isLoading ?
               <button onClick={handleremovecard}><DeleteIcon style={{ color: "#ef4056" }} /></button>
             </div>
 
-
             {
               detailsproduct.full_price.discount_percent ?
                 <div className='flex justify-end gap-1 '>
@@ -128,10 +124,7 @@ isLoading ?
                 null
             }
 
-
-
             <div>
-
 
               {
                 detailsproduct.full_price.discount_percent ?
@@ -149,14 +142,11 @@ isLoading ?
               }
             </div>
 
-
           </div>
       }
     </div>
 
-
     <div className='flex flex-col max-[1050px]:pb-16'>
-
 
       <div className='flex justify-center max-[600px]:flex-col max-[600px]:items-center px-6'>
 
@@ -168,7 +158,7 @@ isLoading ?
           <div className='flex gap-4 w-full mt-5 px-2 justify-center '>
             {
               detailsproduct.images.slice(0, 5).map((item :any, index:number) => (
-                <div key={index} onClick={() => setImagehandler(item.path)} className={`${imagehandler == item.path ? "border-2 border-gray-600/[0.3]" : ""} w-20 h-20 rounded-lg cursor-pointer`}>
+                <div key={index} onClick={() => setImagehandler(item.path)} className={`${imagehandler == item.path ? "border-b-2 border-b-gray-600/[0.3]" : ""} w-20 h-20  cursor-pointer`}>
                   <img className='rounded-xl w-full h-full' src={item.path} alt="" />
                 </div>
 
